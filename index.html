@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VeritasAI | Advanced Fake News Detector & Credibility Sentinel</title>
+  <meta name="description" content="State-of-the-art AI-powered fake news detector. Analyze articles, headlines, and URLs for clickbait, emotional bias, domain reputation, and factual integrity in real-time.">
+  <meta name="keywords" content="fake news detection, AI fact checker, media literacy, truth meter, clickbait detector, misinformation scanner">
+  <meta name="author" content="VeritasAI Technologies">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="VeritasAI - Real-Time Fake News Detection Suite">
+  <meta property="og:description" content="Multi-vector AI media verification tool with sentence-level claim analysis and interactive credibility scoring.">
+  <meta property="og:type" content="website">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrapper">
+      <a href="#hero" class="brand-logo" id="brandLogo">
+        <div class="logo-icon">🛡️</div>
+        <span>Veritas<span class="gradient-text">AI</span></span>
+        <span class="brand-badge">v2.6 SENTINEL</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#scanner">Scanner</a></li>
+          <li><a href="#presets">Trending Presets</a></li>
+          <li><a href="#quiz">Spot the Fake Quiz</a></li>
+          <li><a href="#guide">Media Literacy</a></li>
+          <li><a href="#history">Scan History</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="soundToggleBtn" class="control-btn" title="Toggle UI Sound FX">
+          🔊 <span>Sound On</span>
+        </button>
+        <button id="themeToggleBtn" class="control-btn" title="Toggle Light / Dark Mode">
+          ☀️ <span>Light</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="hero-pill">
+          <span class="live-pulse-dot"></span>
+          <span>MULTI-VECTOR AI INTELLIGENCE ENGINE ACTIVE</span>
+        </div>
+
+        <h1 class="hero-title">
+          Detect Misinformation, Spot Clickbait & <span class="gradient-text">Verify The Truth</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Combat digital deception with real-time heuristic NLP, sensationalism scoring, domain authority indexing, and sentence-level claim breakdown.
+        </p>
+
+        <div class="hero-stats-row">
+          <div class="stat-chip">
+            <span>⚡ Analysis Latency:</span>
+            <strong>&lt; 150ms</strong>
+          </div>
+          <div class="stat-chip">
+            <span>📚 Indexed Domains:</span>
+            <strong>24,000+</strong>
+          </div>
+          <div class="stat-chip">
+            <span>🎯 Linguistic Vectors:</span>
+            <strong>18 Metrics</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Fact Feed Ticker -->
+    <div class="ticker-bar" id="tickerBar">
+      <div class="container ticker-inner">
+        <div class="ticker-label">LIVE SENTINEL FEED</div>
+        <div class="ticker-track" id="liveFactFeed">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Scanner Section -->
+    <section class="scanner-section" id="scanner">
+      <div class="container">
+        <div class="scanner-card">
+          <!-- Mode Tabs -->
+          <div class="input-tabs" role="tablist">
+            <button class="input-tab-btn active" data-tab="text" id="tabBtnText" role="tab">
+              📝 <span>Article & Text Scanner</span>
+            </button>
+            <button class="input-tab-btn" data-tab="url" id="tabBtnUrl" role="tab">
+              🔗 <span>News URL & Domain Checker</span>
+            </button>
+            <button class="input-tab-btn" data-tab="presets" id="tabBtnPresets" role="tab">
+              ⚡ <span>Trending Test Cases</span>
+            </button>
+          </div>
+
+          <!-- Tab Content 1: Text Scanner -->
+          <div class="tab-pane active" id="tab-text" role="tabpanel">
+            <div class="input-group">
+              <textarea 
+                id="articleTextInput" 
+                class="scanner-textarea" 
+                placeholder="Paste the news article body, viral headline, social media post, or suspicious claim here to inspect for misinformation and emotional bias..."
+                rows="7"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Tab Content 2: URL Scanner -->
+          <div class="tab-pane" id="tab-url" role="tabpanel">
+            <div class="input-group">
+              <input 
+                type="url" 
+                id="articleUrlInput" 
+                class="scanner-text-input" 
+                placeholder="https://example-news-source.com/breaking-article-headline"
+              >
+            </div>
+            <p class="text-muted font-mono" style="font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1rem;">
+              ℹ️ URL mode cross-checks domain registry, WHOIS integrity patterns, satirical origins, and known disinfo blacklists.
+            </p>
+          </div>
+
+          <!-- Tab Content 3: Presets Grid -->
+          <div class="tab-pane" id="tab-presets" role="tabpanel">
+            <p class="text-muted" style="margin-bottom: 1rem; font-size: 0.9rem;">
+              Select any preloaded case study below to test how VeritasAI detects real journalism vs. viral fabrications:
+            </p>
+            <div class="presets-grid" id="presetsGrid">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- Meta Row (Counter & Clear) -->
+          <div class="input-meta-row">
+            <span id="charCounter">0 characters | 0 words</span>
+            <button type="button" id="clearBtn" class="btn-secondary" style="padding: 0.35rem 0.85rem; font-size: 0.8rem;">
+              Clear Input ✕
+            </button>
+          </div>
+
+          <!-- Scanner Action Bar -->
+          <div class="scanner-action-bar">
+            <button type="button" id="scanBtn" class="btn-primary">
+              <span>⚡</span> ANALYZE FOR FAKE NEWS
+            </button>
+            <span class="text-muted" style="font-size: 0.85rem;">
+              🔒 100% Client-Side Private Analysis &bull; Zero Server Data Logging
+            </span>
+          </div>
+        </div>
+
+        <!-- Animated Scanner Progress State -->
+        <div id="scannerStatus" class="scanner-status-box hidden">
+          <div class="radar-spinner"></div>
+          <h3>Deep Scanning Content Vectors</h3>
+          <p class="scanner-text">Parsing linguistic features and syntactic density...</p>
+        </div>
+
+        <!-- Full Results Dashboard Container -->
+        <div id="resultsContainer" class="results-dashboard hidden">
+          <!-- Main Verdict Card -->
+          <div class="verdict-card" id="verdictCard">
+            <div class="gauge-wrapper">
+              <svg class="gauge-svg" viewBox="0 0 120 120">
+                <circle class="gauge-bg" cx="60" cy="60" r="54" />
+                <circle id="gaugeCircle" class="gauge-circle" cx="60" cy="60" r="54" />
+              </svg>
+              <div class="gauge-center-content">
+                <div id="gaugeScoreText" class="gauge-score">--</div>
+                <div class="gauge-label">TRUTH INDEX</div>
+              </div>
+            </div>
+
+            <div class="verdict-info">
+              <div id="verdictBadge" class="verdict-badge">VERDICT</div>
+              <h2 id="verdictTitle" class="verdict-title">Reliability Assessment</h2>
+              <p id="verdictSummary" class="verdict-summary">Detailed assessment will appear here.</p>
+              
+              <div class="verdict-actions">
+                <button id="copyReportBtn" class="control-btn" style="background: rgba(0,240,255,0.1); border-color: var(--accent-cyan);">
+                  📋 Copy Verification Card
+                </button>
+                <button id="printReportBtn" class="control-btn">
+                  🖨️ Export PDF / Print
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Multi-Metric Breakdown Grid -->
+          <div class="metrics-grid">
+            <!-- Metric 1: Clickbait Index -->
+            <div class="metric-card">
+              <div>
+                <div class="metric-header">
+                  <span class="metric-title">🎣 Clickbait & Sensationalism</span>
+                  <span id="clickbaitVal" class="metric-val">0%</span>
+                </div>
+                <div class="progress-track">
+                  <div id="clickbaitBar" class="progress-fill" style="width: 0%;"></div>
+                </div>
+              </div>
+              <p class="metric-desc">Detects urgent emotional bait, exaggerated claims, and hyperbolic phrasing.</p>
+            </div>
+
+            <!-- Metric 2: Emotional Polarization -->
+            <div class="metric-card">
+              <div>
+                <div class="metric-header">
+                  <span class="metric-title">🔥 Outrage & Emotional Bias</span>
+                  <span id="emotionVal" class="metric-val">0%</span>
+                </div>
+                <div class="progress-track">
+                  <div id="emotionBar" class="progress-fill" style="width: 0%;"></div>
+                </div>
+              </div>
+              <p class="metric-desc">Measures polarizing rhetoric engineered to elicit fear, fury, or panic.</p>
+            </div>
+
+            <!-- Metric 3: Sourcing & Attribution -->
+            <div class="metric-card">
+              <div>
+                <div class="metric-header">
+                  <span class="metric-title">🔬 Attribution Integrity</span>
+                  <span id="attributionVal" class="metric-val">0%</span>
+                </div>
+                <div class="progress-track">
+                  <div id="attributionBar" class="progress-fill" style="width: 0%;"></div>
+                </div>
+              </div>
+              <p class="metric-desc">Cross-references named institutions, direct quotes, and official statements.</p>
+            </div>
+
+            <!-- Metric 4: Domain Authority -->
+            <div class="metric-card">
+              <div>
+                <div class="metric-header">
+                  <span class="metric-title">🌐 Publisher Registry</span>
+                  <span id="domainStatusTag" class="domain-badge">UNSPECIFIED</span>
+                </div>
+                <p id="domainDesc" class="metric-desc" style="margin-top: 0.5rem; color: var(--text-primary); font-size: 0.85rem;">
+                  Domain evaluated independently of publisher registry.
+                </p>
+              </div>
+              <p class="metric-desc" style="margin-top: 0.5rem;">Indexed against major accredited news wires and flagged hoaxes.</p>
+            </div>
+          </div>
+
+          <!-- Sentence-Level Claim Highlighter -->
+          <div class="highlighter-section">
+            <div class="highlighter-header">
+              <div>
+                <h3>🔍 Sentence-by-Sentence Claim Breakdown</h3>
+                <p class="text-muted" style="font-size: 0.85rem;">Hover over or inspect highlighted sentences for individual heuristic annotations.</p>
+              </div>
+              <div class="claim-filters">
+                <button class="claim-filter-btn active" data-filter="all">All Sentences</button>
+                <button class="claim-filter-btn" data-filter="suspicious">🚨 Flagged Only</button>
+                <button class="claim-filter-btn" data-filter="factual">✅ Factual Only</button>
+              </div>
+            </div>
+
+            <div id="claimsHighlightBox" class="claims-highlight-box">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Deep-Dive Red Flags & Recommendations -->
+          <div class="deep-dive-grid">
+            <div class="dive-box">
+              <h3>🚩 Spotted Red Flags</h3>
+              <ul id="redFlagsList" class="flag-list">
+                <!-- Populated dynamically -->
+              </ul>
+            </div>
+
+            <div class="dive-box">
+              <h3>🛡️ Fact-Checking Checklist</h3>
+              <ul id="recommendationsList" class="rec-list">
+                <!-- Populated dynamically -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spot the Fake Gamified Challenge -->
+    <section class="quiz-section" id="quiz">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">🎮 "Spot the Fake" <span class="gradient-text">Challenge</span></h2>
+          <p class="section-desc">Test your critical media literacy! Can you differentiate verified news headlines from viral fabrications and deepfakes?</p>
+        </div>
+
+        <div class="quiz-card" id="quizContainer">
+          <div class="quiz-top-bar">
+            <span id="quizCategory">Health & Medicine (Question 1/5)</span>
+            <span id="quizScoreCount" class="font-mono">Score: 0/5</span>
+          </div>
+
+          <div class="quiz-progress-bar">
+            <div id="quizProgress" class="quiz-progress-fill"></div>
+          </div>
+
+          <div class="quiz-headline-box">
+            <p id="quizHeadline" class="quiz-headline">Loading headline...</p>
+            <p id="quizHint" class="quiz-hint">Hint: Examining linguistic cues</p>
+          </div>
+
+          <div class="quiz-actions">
+            <button id="quizRealBtn" class="btn-quiz btn-quiz-real">
+              <span>✅</span> REAL NEWS
+            </button>
+            <button id="quizFakeBtn" class="btn-quiz btn-quiz-fake">
+              <span>🛑</span> FAKE / HOAX
+            </button>
+          </div>
+
+          <div id="quizFeedback" class="quiz-feedback-box hidden">
+            <div class="feedback-status">Verdict Result</div>
+            <p id="quizExplanation" class="quiz-explanation">Explanation text goes here.</p>
+            <button id="quizNextBtn" class="btn-primary hidden" style="margin-top: 1rem; padding: 0.5rem 1.25rem; font-size: 0.9rem;">
+              Next Headline &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Media Literacy Educational Toolkit -->
+    <section class="toolkit-section" id="guide" style="padding: 3rem 0;">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">📖 Fake News <span class="gradient-text">Survival Toolkit</span></h2>
+          <p class="section-desc">Essential cognitive frameworks used by professional fact-checkers to debunk disinformation before it spreads.</p>
+        </div>
+
+        <div class="toolkit-grid">
+          <div class="tool-card">
+            <div class="tool-card-icon">🧭</div>
+            <h4>The S.I.F.T. Method</h4>
+            <p><strong>S</strong>top. <strong>I</strong>nvestigate the source. <strong>F</strong>ind better coverage. <strong>T</strong>race claims back to the original source.</p>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-icon">🧠</div>
+            <h4>Emotional Trigger Radar</h4>
+            <p>If an article triggers sudden outrage or terror, pause. Disinformation is intentionally engineered to bypass analytical reasoning.</p>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-icon">🖼️</div>
+            <h4>Reverse Image Inspection</h4>
+            <p>Recycled visuals are common. Always reverse-search images using Google Lens or TinEye to check timestamps and context.</p>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-icon">🔎</div>
+            <h4>URL Domain Typosquatting</h4>
+            <p>Inspect top-level domains. Fake news outlets mimic legitimate agencies using lookalike domains (e.g. <code>.co</code>, <code>.news-today.xyz</code>).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scan History Section -->
+    <section class="history-section" id="history">
+      <div class="container">
+        <div class="history-card">
+          <div class="history-header">
+            <h3>📜 Recent Scan History</h3>
+            <button id="clearHistoryBtn" class="btn-secondary" style="padding: 0.35rem 0.85rem; font-size: 0.8rem;">
+              Clear History
+            </button>
+          </div>
+          
+          <p id="emptyHistory" class="text-muted" style="font-size: 0.9rem;">
+            No previous scans recorded in this browser session. Paste an article above to begin.
+          </p>
+
+          <ul id="historyList" class="history-list">
+            <!-- Populated from LocalStorage -->
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="logo-icon">🛡️</div>
+            <span>Veritas<span class="gradient-text">AI</span></span>
+          </div>
+          <p>
+            An open educational and media literacy initiative dedicated to truth verification, automated clickbait detection, and fighting digital disinformation.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Fact-Check Resources</h5>
+          <ul>
+            <li><a href="https://www.snopes.com" target="_blank" rel="noopener">Snopes Fact-Check</a></li>
+            <li><a href="https://apnews.com/hub/ap-fact-check" target="_blank" rel="noopener">AP Fact Check</a></li>
+            <li><a href="https://www.reuters.com/fact-check" target="_blank" rel="noopener">Reuters Fact Check</a></li>
+            <li><a href="https://www.politifact.com" target="_blank" rel="noopener">PolitiFact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Platform & Standards</h5>
+          <ul>
+            <li><a href="#scanner">Verification Engine</a></li>
+            <li><a href="#quiz">Spot the Fake Quiz</a></li>
+            <li><a href="#guide">SIFT Framework</a></li>
+            <li><a href="#history">Local Data Logs</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 VeritasAI Media Sentinel &bull; Built with pure HTML5, CSS3, & Modern JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/database.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/detector.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
